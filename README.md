@@ -2,8 +2,7 @@
 Project who catch sensor values from heat and air quality then send data through wireless between arduino, and to PC using serial port.
 
 
-# 17.10.2023: 
-Catching data with arduino and a heat sensor to transmit them using RF hardware to visualize this data on remote PC. 
+# 17.10.2023: First Project Component 
 ## calor_rf_tx.ino
 Arduino heat sensor and radio frequency transmision code between arduinos uno
 ## receptor_rf.ino
