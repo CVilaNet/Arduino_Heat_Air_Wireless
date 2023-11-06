@@ -14,6 +14,6 @@ Python code serial monitor and dynamic graph visualization
 
 # 26.10.2023: Second Project Components
 ## calor_com_json.ino
-Arduino catch values from heat sensor, convert it in a json data structure
+Arduino catch values from heat sensor, convert it in a json data structure (calor_com_json arduino code folder)
 ## calor_com_json_heatmap.py
 Receiving json data from arduino, processing and showing in heat map
