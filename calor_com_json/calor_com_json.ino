@@ -56,8 +56,8 @@ void loop() {
         TX_buffer = "[" + (String)trama + ",";
       }
     }
-    //Serial.println("");
+    Serial.println("");
 
     //delay a second
-    delay(1000);
+    delay(100);
 }
