@@ -8,8 +8,7 @@ Adafruit_AMG88xx amg;
 float pixels[AMG88xx_PIXEL_ARRAY_SIZE];
 //AMG88xx_PIXEL_ARRAY_SIZE = 64 (64 pixeles)
 
-long randNumber;
-String inputString;
+String TX_buffer="";
 
 void setup() {
     Serial.begin(9600);
@@ -31,20 +30,34 @@ void loop() {
     //read all the pixels
     amg.readPixels(pixels);
 
-    String amg_array = "[";
-
-    //Serial.print("[");
-    for(int i=1; i<=AMG88xx_PIXEL_ARRAY_SIZE; i++){
-      amg_array += pixels[i-1];
-      if( i%64 != 0 ) amg_array += ", ";
+    // Cargando el Buffer TX
+    byte trama=0;
+    
+    for(int i=0; i<=AMG88xx_PIXEL_ARRAY_SIZE; i++)
+    {
+      //Serial.println(pixels[i-1]);
+      if(i==0){
+        TX_buffer = "[" + (String)trama + ",";
+        }
+      else if( i%8 != 0 ){
+        TX_buffer += (String)pixels[i-1];
+        TX_buffer += ",";
+        }
+      else if( i%8 == 0 )
+      {
+        TX_buffer += (String)pixels[i-1];
+        TX_buffer += "]";
+        trama++;
+        
+        //Serial.println(TX_buffer);
+        String json_data = "{\"Sensor_id\":\"AMG8833\",\"Value\":" + (String)TX_buffer + "}";
+        Serial.println(json_data);
+    
+        TX_buffer = "[" + (String)trama + ",";
+      }
     }
-
-    amg_array += "]";
-    //Serial.println(amg_array);
-
-    String json_data = "{\"Sensor_id\":\"AMG88\",\"Value\":" + (String)amg_array + "}";
-    Serial.println(json_data);  
+    //Serial.println("");
 
     //delay a second
-    delay(100);
+    delay(1000);
 }
