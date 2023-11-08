@@ -84,5 +84,5 @@ thread = threading.Thread(target=read_arduino_tx)
 thread.start()
 
 # Cargando la visualización gráfica del mapa de calor
-animation = FuncAnimation(fig, func=animation_frame, frames=1, interval=1000)
+animation = FuncAnimation(fig, func=animation_frame, frames=1, interval=2000)
 plt.show()
