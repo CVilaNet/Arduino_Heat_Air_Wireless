@@ -13,6 +13,8 @@ Arduino RX and convert in JSon structure in order to send data through COM seria
 Python code serial monitor and dynamic graph visualization
 
 # 26.10.2023: Second Project Components
+## calor_base.ino
+Basic code for read values from AMG8833 using arduino (calor_base arduino folder)
 ## calor_com_json.ino
 Arduino catch values from heat sensor, convert it in a json data structure (calor_com_json arduino code folder)
 ## calor_com_json_heatmap.py
